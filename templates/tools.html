@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cyber Security Toolkit - Tools</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+</head>
+<body>
+
+<div class="background-animation"></div>
+
+<nav class="navbar">
+    <div class="logo">🛡 Cyber Security Toolkit</div>
+    <ul>
+        <li><a href="/dashboard"><i class="fa-solid fa-house"></i> Dashboard</a></li>
+        <li><a href="/tools"><i class="fa-solid fa-toolbox"></i> Tools</a></li>
+        <li><a href="/history"><i class="fa-solid fa-clock-rotate-left"></i> History</a></li>
+        <li><a href="/reports"><i class="fa-solid fa-chart-column"></i> Reports</a></li>
+        {% if session.get('username') == 'admin' %}
+        <li><a href="/admin"><i class="fa-solid fa-user-shield"></i> Admin</a></li>
+        {% endif %}
+        <li><a href="/about"><i class="fa-solid fa-circle-info"></i> About</a></li>
+        <li><a href="/logout"><i class="fa-solid fa-right-from-bracket"></i> Logout</a></li>
+    </ul>
+</nav>
+
+<div class="dashboard">
+    <h1>🛠 Cyber Security Tools</h1>
+    <p>Select an analysis module from the secure terminal inventory node.</p>
+
+    <div class="cards">
+        <div class="card">
+            <h2>🔐</h2>
+            <h3>Password Strength Checker</h3>
+            <p>Analyze complexity metrics to ensure mitigation against brute-force attacks.</p>
+            <button onclick="window.location.href='/password-checker'">Open Tool</button>
+        </div>
+
+        <div class="card">
+            <h2>🔑</h2>
+            <h3>Password Generator</h3>
+            <p>Instantly generate high-entropy secure strings with custom algorithmic constraints.</p>
+            <button onclick="window.location.href='/password-generator'">Open Tool</button>
+        </div>
+
+        <div class="card">
+            <h2>🌐</h2>
+            <h3>URL Scanner</h3>
+            <p>Perform link destination validation routing checks to analyze base protocol safety parameters.</p>
+            <button onclick="window.location.href='/url-scanner'">Open Tool</button>
+        </div>
+
+        <div class="card">
+            <h2>📍</h2>
+            <h3>IP Lookup</h3>
+            <p>Deconstruct structural variations to check private addressing structures vs public domains.</p>
+            <button onclick="window.location.href='/ip-lookup'">Open Tool</button>
+        </div>
+
+        <div class="card">
+            <h2>📁</h2>
+            <h3>File Hash Checker</h3>
+            <p>Generate cryptographic verification block values using localized MD5, SHA-1, and SHA-256 integrity models.</p>
+            <button onclick="window.location.href='/file-hash'">Open Tool</button>
+        </div>
+
+        <div class="card">
+            <h2>📡</h2>
+            <h3>Port Scanner</h3>
+            <p>Scan critical network service doors across targeted hosts to identify exposed connection ports.</p>
+            <button onclick="window.location.href='/port-scanner'">Open Tool</button>
+        </div>
+
+        <div class="card">
+            <h2>📱</h2>
+            <h3>QR Code Scanner</h3>
+            <p>Upload target matrix bar representations to trace embedded URLs before running executable directions.</p>
+            <button onclick="window.location.href='/qr-scanner'">Open Tool</button>
+        </div>
+
+        <div class="card">
+            <h2>📧</h2>
+            <h3>Phishing Detector</h3>
+            <p>Parse unverified messaging templates using linguistic heuristic criteria to uncover deceptive traps.</p>
+            <button onclick="window.location.href='/phishing-detector'">Open Tool</button>
+        </div>
+
+        <div class="card">
+            <h2>🌍</h2>
+            <h3>DNS Lookup</h3>
+            <p>Resolve domain records directly into clear IPv4 addressing mappings instantly.</p>
+            <button onclick="window.location.href='/dns-lookup'">Open Tool</button>
+        </div>
+
+        <div class="card">
+            <h2>🔒</h2>
+            <h3>SSL Checker</h3>
+            <p>Audit domain certificate parameters to guarantee data security verification holds firm.</p>
+            <button onclick="window.location.href='/ssl-checker'">Open Tool</button>
+        </div>
+
+        <div class="card">
+            <h2>📄</h2>
+            <h3>Log Analyzer</h3>
+            <p>Process flat event recording dumps to aggregate threat patterns and track server errors.</p>
+            <button onclick="window.location.href='/log-analyzer'">Open Tool</button>
+        </div>
+    </div>
+</div>
+
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+<script src="{{ url_for('static', filename='matrix.js') }}"></script>
+</body>
+</html>

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cyber Security Toolkit - Security Reports</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+</head>
+<body>
+
+<div class="background-animation"></div>
+
+<nav class="navbar">
+    <div class="logo">🛡 Cyber Security Toolkit</div>
+    <ul>
+        <li><a href="/dashboard"><i class="fa-solid fa-house"></i> Dashboard</a></li>
+        <li><a href="/tools"><i class="fa-solid fa-toolbox"></i> Tools</a></li>
+        <li><a href="/history"><i class="fa-solid fa-clock-rotate-left"></i> History</a></li>
+        <li><a href="/reports"><i class="fa-solid fa-chart-column"></i> Reports</a></li>
+        {% if session.get('username') == 'admin' %}
+        <li><a href="/admin"><i class="fa-solid fa-user-shield"></i> Admin</a></li>
+        {% endif %}
+        <li><a href="/about"><i class="fa-solid fa-circle-info"></i> About</a></li>
+        <li><a href="/logout"><i class="fa-solid fa-right-from-bracket"></i> Logout</a></li>
+    </ul>
+</nav>
+<div class="dashboard">
+    <h1 class="neon"><i class="fa-solid fa-chart-column"></i> Security Reports</h1>
+    <p>Framework Statistics Overview Metric Analytics.</p>
+
+    <div class="cards">
+        <div class="card">
+            <h2><i class="fa-solid fa-screwdriver-wrench" style="color: #00e5ff;"></i></h2>
+            <h3>Total Tools</h3>
+            <h1 class="neon" style="font-size: 36px; margin-top: 10px;">{{ report.total_tools }}</h1>
+        </div>
+        <div class="card">
+            <h2><i class="fa-solid fa-user-lock" style="color: #00ff66;"></i></h2>
+            <h3>Password Tools</h3>
+            <h1 class="neon" style="font-size: 36px; margin-top: 10px;">{{ report.password_tools }}</h1>
+        </div>
+        <div class="card">
+            <h2><i class="fa-solid fa-network-wired" style="color: #ffb703;"></i></h2>
+            <h3>Network Tools</h3>
+            <h1 class="neon" style="font-size: 36px; margin-top: 10px;">{{ report.network_tools }}</h1>
+        </div>
+        <div class="card">
+            <h2><i class="fa-solid fa-folder-open" style="color: #ff4444;"></i></h2>
+            <h3>Hash Tools</h3>
+            <h1 class="neon" style="font-size: 36px; margin-top: 10px;">{{ report.hash_tools }}</h1>
+        </div>
+    </div>
+
+    <br><br>
+
+    <div class="container">
+        <h2>System Feature Distribution Matrix</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th style="padding:15px; text-align: left;">Feature Target Node</th>
+                    <th style="padding:15px; text-align: left;">Deployment Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Password Complexity Validator</td>
+                    <td class="success">✔ ACTIVE</td>
+                </tr>
+                <tr>
+                    <td>High-Entropy Password Generator</td>
+                    <td class="success">✔ ACTIVE</td>
+                </tr>
+                <tr>
+                    <td>URL Protocol Validation Router</td>
+                    <td class="success">✔ ACTIVE</td>
+                </tr>
+                <tr>
+                    <td>IP Struct Demultiplexer Check</td>
+                    <td class="success">✔ ACTIVE</td>
+                </tr>
+                <tr>
+                    <td>Cryptographic Integrity Block Hasher</td>
+                    <td class="success">✔ ACTIVE</td>
+                </tr>
+                <tr>
+                    <td>Network Gateway Door Port Scanner</td>
+                    <td class="success">✔ ACTIVE</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <br>
+
+    <div class="container">
+        <h2>Deployment Project Coordinates</h2>
+        <p><b>Developer Account ID:</b> Abhishek Vaghela</p>
+        <p><b>Target Base Application:</b> Cyber Security Monitoring Toolkit Architecture</p>
+        <p><b>Core Technology Stacks:</b> Python Engine • Flask Framework • HTML5 Semantic Architecture • CSS3 Advanced Variables • JS Canvas Overlay Engines</p>
+    </div>
+</div>
+
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+<script src="{{ url_for('static', filename='matrix.js') }}"></script>
+</body>
+</html>

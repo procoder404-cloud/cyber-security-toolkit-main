@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Central Registry Administration</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+</head>
+<body>
+
+<div class="background-animation"></div>
+
+<nav class="navbar">
+    <div class="logo">🛡 Cyber Security Toolkit</div>
+    <ul>
+        <li><a href="/dashboard"><i class="fa-solid fa-house"></i> Dashboard</a></li>
+        <li><a href="/tools"><i class="fa-solid fa-toolbox"></i> Tools</a></li>
+        <li><a href="/history"><i class="fa-solid fa-clock-rotate-left"></i> History</a></li>
+        <li><a href="/reports"><i class="fa-solid fa-chart-column"></i> Reports</a></li>
+        {% if session.get('username') == 'admin' %}
+        <li><a href="/admin"><i class="fa-solid fa-user-shield"></i> Admin</a></li>
+        {% endif %}
+        <li><a href="/about"><i class="fa-solid fa-circle-info"></i> About</a></li>
+        <li><a href="/logout"><i class="fa-solid fa-right-from-bracket"></i> Logout</a></li>
+    </ul>
+</nav>
+
+<div class="dashboard">
+    <h1>👑 System Admin Registry Terminal</h1>
+    <p>Secure visibility panel tracking base platform user distribution channels.</p>
+
+    <div class="stats">
+        <div class="stat-card">
+            <h2>{{ total_users }}</h2>
+            <p>Registered User Node Profiles</p>
+        </div>
+        <div class="stat-card">
+            <h2>{{ total_scans }}</h2>
+            <p>Executed Threat Toolkit Inspections</p>
+        </div>
+    </div>
+
+    <div class="container" style="margin-top: 20px;">
+        <h2>Encrypted Active Accounts Directory</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Database Identifier Index</th>
+                    <th>User Handling Designation</th>
+                    <th>Encrypted Email Interface Routing Coordinates</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for user in users %}
+                <tr>
+                    <td><code>#00{{ user.id }}</code></td>
+                    <td><b>{{ user.username }}</b></td>
+                    <td style="color: #00e5ff;">{{ user.email }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+<script src="{{ url_for('static', filename='matrix.js') }}"></script>
+</body>
+</html>

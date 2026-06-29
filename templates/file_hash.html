@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>File Hash Checker</title>
+
+<link rel="stylesheet"
+href="{{ url_for('static', filename='style.css') }}">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+</head>
+
+<body>
+
+<div class="background-animation"></div>
+
+<nav class="navbar">
+
+<div class="logo">
+
+🛡 Cyber Security Toolkit
+
+</div>
+
+<ul>
+
+<li>
+<a href="/dashboard">
+<i class="fa-solid fa-house"></i>
+Dashboard
+</a>
+</li>
+
+<li>
+<a href="/tools">
+<i class="fa-solid fa-toolbox"></i>
+Tools
+</a>
+</li>
+
+<li>
+<a href="/history">
+<i class="fa-solid fa-clock-rotate-left"></i>
+History
+</a>
+</li>
+
+<li>
+<a href="/reports">
+<i class="fa-solid fa-chart-column"></i>
+Reports
+</a>
+</li>
+
+<li>
+<a href="/admin">
+<i class="fa-solid fa-user-shield"></i>
+Admin
+</a>
+</li>
+
+<li>
+<a href="/about">
+<i class="fa-solid fa-circle-info"></i>
+About
+</a>
+</li>
+
+<li>
+<a href="/logout">
+<i class="fa-solid fa-right-from-bracket"></i>
+Logout
+</a>
+</li>
+
+</ul>
+
+</nav>
+
+<div class="container">
+
+<h1>
+
+📁 File Hash Checker
+
+</h1>
+
+<p>
+
+Upload any file to generate its cryptographic hashes.
+
+</p>
+
+<form method="POST" enctype="multipart/form-data">
+
+<input
+type="file"
+name="file"
+required>
+
+<br><br>
+
+<button type="submit">
+
+Generate Hash
+
+</button>
+
+</form>
+
+{% if hashes %}
+
+<div class="result">
+
+<h2>
+
+Hash Results
+
+</h2>
+
+<label>MD5</label>
+
+<input
+type="text"
+id="md5"
+value="{{ hashes.md5 }}"
+readonly>
+
+<button
+type="button"
+onclick="copyHash('md5')">
+
+📋 Copy
+
+</button>
+
+<br><br>
+
+<label>SHA-1</label>
+
+<input
+type="text"
+id="sha1"
+value="{{ hashes.sha1 }}"
+readonly>
+
+<button
+type="button"
+onclick="copyHash('sha1')">
+
+📋 Copy
+
+</button>
+
+<br><br>
+
+<label>SHA-256</label>
+
+<input
+type="text"
+id="sha256"
+value="{{ hashes.sha256 }}"
+readonly>
+
+<button
+type="button"
+onclick="copyHash('sha256')">
+
+📋 Copy
+
+</button>
+
+</div>
+
+{% endif %}
+
+</div>
+
+<script>
+
+function copyHash(id){
+
+const text=document.getElementById(id);
+
+text.select();
+
+text.setSelectionRange(0,99999);
+
+navigator.clipboard.writeText(text.value);
+
+alert("Copied!");
+
+}
+
+</script>
+
+
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+
+<script src="{{ url_for('static', filename='matrix.js') }}"></script>
+
+</body>
+</html>

@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Log File Analyzer</title>
+
+<link rel="stylesheet"
+href="{{ url_for('static', filename='style.css') }}">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+</head>
+
+<body>
+
+<div class="background-animation"></div>
+
+<nav class="navbar">
+
+<div class="logo">
+
+🛡 Cyber Security Toolkit
+
+</div>
+
+<ul>
+
+<li>
+<a href="/dashboard">
+<i class="fa-solid fa-house"></i>
+Dashboard
+</a>
+</li>
+
+<li>
+<a href="/tools">
+<i class="fa-solid fa-toolbox"></i>
+Tools
+</a>
+</li>
+
+<li>
+<a href="/history">
+<i class="fa-solid fa-clock-rotate-left"></i>
+History
+</a>
+</li>
+
+<li>
+<a href="/reports">
+<i class="fa-solid fa-chart-column"></i>
+Reports
+</a>
+</li>
+
+<li>
+<a href="/admin">
+<i class="fa-solid fa-user-shield"></i>
+Admin
+</a>
+</li>
+
+<li>
+<a href="/about">
+<i class="fa-solid fa-circle-info"></i>
+About
+</a>
+</li>
+
+<li>
+<a href="/logout">
+<i class="fa-solid fa-right-from-bracket"></i>
+Logout
+</a>
+</li>
+
+</ul>
+
+</nav>
+
+<div class="container">
+
+<h1>📄 Log File Analyzer</h1>
+
+<p>
+
+Upload a .txt log file for analysis.
+
+</p>
+
+<form method="POST" enctype="multipart/form-data">
+
+<input
+type="file"
+name="logfile"
+accept=".txt,.log"
+required>
+
+<br><br>
+
+<button type="submit">
+
+Analyze Log
+
+</button>
+
+</form>
+
+{% if result %}
+
+<div class="result">
+
+<h2>Analysis Result</h2>
+
+{{ result|safe }}
+
+</div>
+
+{% endif %}
+
+</div>
+
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+
+<script src="{{ url_for('static', filename='matrix.js') }}"></script>
+
+</body>
+</html>

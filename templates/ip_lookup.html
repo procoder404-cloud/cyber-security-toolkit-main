@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>IP Lookup</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+</head>
+
+<body>
+
+<div class="background-animation"></div>
+
+<nav class="navbar">
+
+<div class="logo">
+
+🛡 Cyber Security Toolkit
+
+</div>
+
+<ul>
+
+<li>
+<a href="/dashboard">
+<i class="fa-solid fa-house"></i>
+Dashboard
+</a>
+</li>
+
+<li>
+<a href="/tools">
+<i class="fa-solid fa-toolbox"></i>
+Tools
+</a>
+</li>
+
+<li>
+<a href="/history">
+<i class="fa-solid fa-clock-rotate-left"></i>
+History
+</a>
+</li>
+
+<li>
+<a href="/reports">
+<i class="fa-solid fa-chart-column"></i>
+Reports
+</a>
+</li>
+
+<li>
+<a href="/admin">
+<i class="fa-solid fa-user-shield"></i>
+Admin
+</a>
+</li>
+
+<li>
+<a href="/about">
+<i class="fa-solid fa-circle-info"></i>
+About
+</a>
+</li>
+
+<li>
+<a href="/logout">
+<i class="fa-solid fa-right-from-bracket"></i>
+Logout
+</a>
+</li>
+
+</ul>
+
+</nav>
+
+<div class="container">
+
+<h1>
+
+📍 IP Address Lookup
+
+</h1>
+
+<p>
+
+Check whether an IP Address is Public or Private.
+
+</p>
+
+<form method="POST">
+
+<input
+type="text"
+name="ip"
+placeholder="Example : 192.168.1.1"
+required>
+
+<br><br>
+
+<button type="submit">
+
+Analyze IP
+
+</button>
+
+</form>
+
+{% if result %}
+
+<div class="result">
+
+{% if result.error %}
+
+<h2 style="color:red;">
+
+{{ result.error }}
+
+</h2>
+
+{% else %}
+
+<h2>
+
+IP Information
+
+</h2>
+
+<table style="width:100%; color:white;">
+
+<tr>
+
+<td><b>IP Address</b></td>
+
+<td>{{ result.address }}</td>
+
+</tr>
+
+<tr>
+
+<td><b>Version</b></td>
+
+<td>IPv{{ result.version }}</td>
+
+</tr>
+
+<tr>
+
+<td><b>Type</b></td>
+
+<td>{{ result.type }}</td>
+
+</tr>
+
+</table>
+
+{% endif %}
+
+</div>
+
+{% endif %}
+
+<div class="result">
+
+<h2>
+
+Examples
+
+</h2>
+
+<p>
+
+Private :
+
+192.168.1.1
+
+</p>
+
+<p>
+
+Private :
+
+10.0.0.1
+
+</p>
+
+<p>
+
+Public :
+
+8.8.8.8
+
+</p>
+
+<p>
+
+Public :
+
+1.1.1.1
+
+</p>
+
+</div>
+
+</div>
+
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+
+<script src="{{ url_for('static', filename='matrix.js') }}"></script>
+
+</body>
+</html>

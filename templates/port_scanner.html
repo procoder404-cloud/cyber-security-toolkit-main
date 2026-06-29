@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Port Scanner</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+</head>
+
+<body>
+
+<div class="background-animation"></div>
+
+<nav class="navbar">
+
+<div class="logo">
+
+🛡 Cyber Security Toolkit
+
+</div>
+
+<ul>
+
+<li>
+<a href="/dashboard">
+<i class="fa-solid fa-house"></i>
+Dashboard
+</a>
+</li>
+
+<li>
+<a href="/tools">
+<i class="fa-solid fa-toolbox"></i>
+Tools
+</a>
+</li>
+
+<li>
+<a href="/history">
+<i class="fa-solid fa-clock-rotate-left"></i>
+History
+</a>
+</li>
+
+<li>
+<a href="/reports">
+<i class="fa-solid fa-chart-column"></i>
+Reports
+</a>
+</li>
+
+<li>
+<a href="/admin">
+<i class="fa-solid fa-user-shield"></i>
+Admin
+</a>
+</li>
+
+<li>
+<a href="/about">
+<i class="fa-solid fa-circle-info"></i>
+About
+</a>
+</li>
+
+<li>
+<a href="/logout">
+<i class="fa-solid fa-right-from-bracket"></i>
+Logout
+</a>
+</li>
+
+</ul>
+
+</nav>
+
+<div class="container">
+
+<h1>
+
+📡 Port Scanner
+
+</h1>
+
+<p>
+
+Scan common TCP ports on a host.
+
+</p>
+
+<form method="POST">
+
+<input
+type="text"
+name="host"
+placeholder="Example: google.com or 8.8.8.8"
+required>
+
+<br><br>
+
+<button type="submit">
+
+Start Scan
+
+</button>
+
+</form>
+
+{% if results %}
+
+<div class="result">
+
+<h2>
+
+Scan Results
+
+</h2>
+
+<table style="width:100%; color:white; border-collapse:collapse;">
+
+<tr>
+
+<th style="padding:10px;">Port</th>
+
+<th style="padding:10px;">Status</th>
+
+</tr>
+
+{% for result in results %}
+
+<tr>
+
+{% if "OPEN" in result %}
+
+<td style="padding:10px;">{{ result.split(":")[0] }}</td>
+
+<td style="padding:10px; color:lime;">
+{{ result.split(":")[1] }}
+</td>
+
+{% else %}
+
+<td style="padding:10px;">{{ result.split(":")[0] }}</td>
+
+<td style="padding:10px; color:red;">
+{{ result.split(":")[1] }}
+</td>
+
+{% endif %}
+
+</tr>
+
+{% endfor %}
+
+</table>
+
+</div>
+
+{% endif %}
+
+<div class="result">
+
+<h2>
+
+Common Ports
+
+</h2>
+
+<table style="width:100%; color:white; border-collapse:collapse;">
+
+<tr>
+
+<th>Port</th>
+
+<th>Service</th>
+
+</tr>
+
+<tr><td>20</td><td>FTP Data</td></tr>
+
+<tr><td>21</td><td>FTP</td></tr>
+
+<tr><td>22</td><td>SSH</td></tr>
+
+<tr><td>23</td><td>Telnet</td></tr>
+
+<tr><td>25</td><td>SMTP</td></tr>
+
+<tr><td>53</td><td>DNS</td></tr>
+
+<tr><td>80</td><td>HTTP</td></tr>
+
+<tr><td>110</td><td>POP3</td></tr>
+
+<tr><td>143</td><td>IMAP</td></tr>
+
+<tr><td>443</td><td>HTTPS</td></tr>
+
+<tr><td>445</td><td>SMB</td></tr>
+
+<tr><td>3389</td><td>Remote Desktop</td></tr>
+
+</table>
+
+</div>
+
+</div>
+
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+
+<script src="{{ url_for('static', filename='matrix.js') }}"></script>
+
+</body>
+</html>

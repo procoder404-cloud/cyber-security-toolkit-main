@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cyber Security Toolkit - History</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+</head>
+<body>
+
+<div class="background-animation"></div>
+
+<nav class="navbar">
+    <div class="logo">🛡 Cyber Security Toolkit</div>
+    <ul>
+        <li><a href="/dashboard"><i class="fa-solid fa-house"></i> Dashboard</a></li>
+        <li><a href="/tools"><i class="fa-solid fa-toolbox"></i> Tools</a></li>
+        <li><a href="/history"><i class="fa-solid fa-clock-rotate-left"></i> History</a></li>
+        <li><a href="/reports"><i class="fa-solid fa-chart-column"></i> Reports</a></li>
+        {% if session.get('username') == 'admin' %}
+        <li><a href="/admin"><i class="fa-solid fa-user-shield"></i> Admin</a></li>
+        {% endif %}
+        <li><a href="/about"><i class="fa-solid fa-circle-info"></i> About</a></li>
+        <li><a href="/logout"><i class="fa-solid fa-right-from-bracket"></i> Logout</a></li>
+    </ul>
+</nav>
+<div class="dashboard">
+    <h1 class="neon"><i class="fa-solid fa-clock-rotate-left"></i> Scan History</h1>
+    <p>Audit trail logs tracking executed framework diagnostic procedures.</p>
+
+    <div class="container" style="margin-top: 25px;">
+        <h2>Activity Log Matrix</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th style="text-align: left; padding: 15px;">Date & Time</th>
+                    <th style="text-align: left; padding: 15px;">Tool</th>
+                    <th style="text-align: left; padding: 15px;">Result</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% if history %}
+                    {% for item in history %}
+                    <tr>
+                        <td style="padding: 15px;"><code>{{ item.scan_time }}</code></td>
+                        <td style="padding: 15px;"><b>{{ item.tool_name }}</b></td>
+                        <td style="padding: 15px; color: #00e5ff;">{{ item.result }}</td>
+                    </tr>
+                    {% endfor %}
+                {% else %}
+                    <tr>
+                        <td colspan="3" style="text-align: center; padding: 30px; color: #94a3b8;">
+                            No active entries recorded inside the network historical node ledger.
+                        </td>
+                    </tr>
+                {% endif %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+<script src="{{ url_for('static', filename='matrix.js') }}"></script>
+</body>
+</html>
